@@ -151,7 +151,7 @@ function topThreeTags(arr) {
     var allTags2 = allTags.reduce(function(res, tags) {
         return res.concat(tags)
     }, []);
-    console.log(allTags2);
+    // console.log(allTags2);
     
     let cont = allTags2.reduce(function(container, tag) {
        if(container[tag]) {
@@ -163,17 +163,19 @@ function topThreeTags(arr) {
     }, {});
     console.log(cont);
     
-    var mostCommonNumber = 0;
+    var occurrences = 0;
    
+    // cont.reduce(mostCommonTags, )
+    
     
     _.each(cont, function(v, k, a) {
-        if(v > mostCommonNumber) {
+        if(v >= occurrences) {
             mostCommonTags.unshift(k);
-            mostCommonNumber = v;
+            occurrences = v;
         }
         
     });
-    return mostCommonTags;
+    return mostCommonTags.slice(0, 3);
 };
 
 console.log(topThreeTags(customers));
